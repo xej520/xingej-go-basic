@@ -18,6 +18,8 @@ func sample2(msg chan string) {
 	time.Sleep(2 * time.Second)
 	str := <-msg
 	msg <- str + " hello world goroutines!"
+
+	close(msg)
 }
 
 func main() {
@@ -25,10 +27,13 @@ func main() {
 	go sample(msg)
 	go sample2(msg)
 	time.Sleep(3 * time.Second)
+	for key := range msg {
+		fmt.Println(key)
+	}
 
-	fmt.Println(<-msg)
-	fmt.Println(<-msg)
-	fmt.Println(<-msg)
-	fmt.Println(<-msg)
+	//fmt.Println(<-msg)
+	//fmt.Println(<-msg)
+	//fmt.Println(<-msg)
+	//fmt.Println(<-msg)
 
 }
