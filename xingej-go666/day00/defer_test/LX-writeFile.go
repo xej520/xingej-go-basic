@@ -2,15 +2,13 @@
 package main
 
 import (
-	"os"
-	"fmt"
 	"bufio"
-
-	"xingej-go666/day00/defer_test/fib"
+	"fmt"
+	"os"
 )
 
 func main() {
-	writeFile("fib.txt")
+	writeFile("fib2.txt")
 }
 
 func writeFile(filename string) {
@@ -32,11 +30,20 @@ func writeFile(filename string) {
 	//从内存，刷新到磁盘文件里
 	defer writer.Flush()
 
-	f := fib.Fibonacci()
-	for i:=0; i<20; i++{
+	f := Fibonacci()
+	for i := 0; i < 20; i++ {
 		fmt.Fprintln(writer, f())
 	}
 
 	//总之，先运行的是writer.Flush()， 然后，再去运行file.Close()，defer的作用就发挥出来了，
 	//是不是很合理
+}
+
+//斐波那契数列
+func Fibonacci() func() int {
+	a, b := 0, 1
+	return func() int {
+		a, b = b, a+b
+		return a
+	}
 }

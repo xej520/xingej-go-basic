@@ -10,5 +10,5 @@ func main() {
 		fmt.Println("go k8s")
 	}()
 
-	time.Sleep(time.Second * 2)
+	time.Sleep(time.Second * 1)
 }

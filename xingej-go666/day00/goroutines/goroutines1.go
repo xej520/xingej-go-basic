@@ -7,7 +7,4 @@ func main() {
 		fmt.Println("go k8s")
 
 	}()
-
-
 }
-

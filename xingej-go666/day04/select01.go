@@ -27,36 +27,39 @@ func main() {
 			case v, ok := <-c1:
 				//也就是说，当channel关闭的时候，就会退出select，就break
 				if !ok {
-					fmt.Println("====chan1===")
+					fmt.Println("====chan1==v1:\t", v)
+
 					o <- true
 					break
 				}
 				fmt.Println("v1:\t", v)
+				//添加Sleep的目的是，因为，测试时，可以观察到是否接受到了数据
+				time.Sleep(3 * time.Second)
 
 			case v, ok := <-c2:
 				if !ok {
-					fmt.Println("----chann2---->:\t", v, " ===ok:\t", ok)
+					fmt.Println("----chann2---v2:\t", v, " ===ok:\t", ok)
 					o <- true
 					break
 				}
 				fmt.Println("v2:\t", v)
-
+				//添加Sleep的目的是，因为，测试时，可以观察到是否接受到了数据
+				time.Sleep(3 * time.Second)
 			default:
 				fmt.Println("====没有接收到任何数据====")
 			}
-
 		}
 	}()
 
-	//c1 <- 1
-	//c2 <- "hello,"
-	//c1 <- 4
-	//c2 <- " Go world"
+	c1 <- 1
+	c2 <- "hello,"
+	c1 <- 4
+	c2 <- " Go world"
 
 	close(c1) //关闭c1时，select就会接收到，ok就会变成false,然后就会向channel里发送true，主线程读取到true
-	//close(c2)
+	close(c2)
 
-	time.Sleep(5 * time.Second)
+	//time.Sleep(5 * time.Second)
 	//主程序读取
 	//for i := 0; i < 2; i++ {
 	//	fmt.Println("====chan0==1==")
