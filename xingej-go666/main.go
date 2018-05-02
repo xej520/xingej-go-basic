@@ -1,24 +1,23 @@
 //defer 测试
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+	"strconv"
+)
 
 func main() {
-	defer fmt.Println(" A")
-	defer fmt.Println(" B")
-	defer fmt.Println(" C")
-	defer fmt.Println(" D")
+	//int类型
+	i := 9
+	//转换成string类型
+	num := strconv.Itoa(i)
 
-	//defer 调用匿名函数
-	defer func() {
-		fmt.Println(" E")
-	}()
+	//reflect.TypeOf(num).Name()获取类型名字
+	if reflect.TypeOf(num).Name() == "string" {
+		fmt.Println("==1==>:\t", num)
+	} else {
+		fmt.Println("==2==>:\t", num)
+	}
 
-	//defer调用普通函数
-	defer deferTest()
-
-}
-
-func deferTest() {
-	fmt.Println("====deferTest====")
 }
