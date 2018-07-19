@@ -64,7 +64,7 @@ func main() {
 
 	fmt.Println("-----------------------------------------------")
 	//--------------迭代操作-------------------
-	//for i, v := range slice {
+	//for2 i, v := range slice {
 	//
 	//}
 	//i, 表示下标，v表示对应的值，是拷贝的值
@@ -128,7 +128,5 @@ func main() {
 	}
 	fmt.Println("kafkaClusterIdNameMap:\t", kafkaClusterIdNameMap)
 	fmt.Println("kafkaNameClusterIdMap:\t", kafkaNameClusterIdMap)
-
-
 
 }

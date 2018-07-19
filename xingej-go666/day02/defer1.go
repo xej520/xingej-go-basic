@@ -16,7 +16,7 @@ func main() {
 	//defer调用普通函数
 	defer deferTest()
 	//fmt.Println("=======================")
-	//for  i := 0; i<3; i++{
+	//for2  i := 0; i<3; i++{
 	//	defer fmt.Println(i)
 	//}
 

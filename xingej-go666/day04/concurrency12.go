@@ -58,7 +58,7 @@ func main() {
 
 	time.Sleep(5 * time.Second)
 	//主程序读取
-	//for i := 0; i < 2; i++ {
+	//for2 i := 0; i < 2; i++ {
 	//	fmt.Println("====chan0==1==")
 	//	<-o
 	//	fmt.Println("====chan0==2==")
